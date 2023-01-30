@@ -1,5 +1,6 @@
 let ship = document.querySelector("#ship")
 let game = document.querySelector('#game')
+let asteroidi = []
 
 ship.style.left = '50vw';
 ship.style.top = '90vh';
@@ -17,11 +18,20 @@ window.addEventListener("keydown", (e)=>{
 })
 
 setInterval(() => {
-    a = document.createElement("img")
-    a.src = 'asteroid.png';
-    a.style.top = '10vh';
-    a.style.position = 'absolute'
-    a.style.left = 680+(Math.random()*420)+'px';
-    a.className = 'asteroid';
-    game.appendChild(a);
+    asteroidi.push(document.createElement("img"))
+    asteroidi[asteroidi.length-1].src = 'asteroid.png';
+    asteroidi[asteroidi.length-1].style.top = '10vh';
+    asteroidi[asteroidi.length-1].style.position = 'absolute'
+    asteroidi[asteroidi.length-1].style.left = 680+(Math.random()*420)+'px';
+    asteroidi[asteroidi.length-1].className = 'asteroid';
+    game.appendChild(asteroidi[asteroidi.length-1]);
+    asteroidi[asteroidi.length-1].animate([
+        {
+            transform: 'translateY(1000px)'
+        }
+    ], {duration: 5000, iterations: 1})
 }, 3000);
+
+setInterval(() => {
+    asteroidi[0].remove()
+}, 5000);
