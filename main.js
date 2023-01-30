@@ -7,7 +7,6 @@ ship.style.top = '90vh';
 let pos = ship.offsetLeft;
 
 window.addEventListener("keydown", (e)=>{
-    console.log(e.key)
     if(e.key == "ArrowLeft" && pos > 680) {
         ship.style.left = (pos-20)+"px";
         pos = ship.offsetLeft;
@@ -18,20 +17,32 @@ window.addEventListener("keydown", (e)=>{
 })
 
 setInterval(() => {
-    asteroidi.push(document.createElement("img"))
-    asteroidi[asteroidi.length-1].src = 'asteroid.png';
-    asteroidi[asteroidi.length-1].style.top = '10vh';
-    asteroidi[asteroidi.length-1].style.position = 'absolute'
-    asteroidi[asteroidi.length-1].style.left = 680+(Math.random()*420)+'px';
-    asteroidi[asteroidi.length-1].className = 'asteroid';
-    game.appendChild(asteroidi[asteroidi.length-1]);
-    asteroidi[asteroidi.length-1].animate([
-        {
-            transform: 'translateY(1000px)'
-        }
-    ], {duration: 5000, iterations: 1})
+    let magicanAsteroid = document.createElement("img")
+    magicanAsteroid.src = 'asteroid.png';
+    magicanAsteroid.style.top = '10vh';
+    magicanAsteroid.style.position = 'absolute'
+    magicanAsteroid.style.left = 680+(Math.random()*420)+'px';
+    magicanAsteroid.className = 'asteroid';
+    game.appendChild(magicanAsteroid);
+    asteroidi.push(magicanAsteroid);
+
 }, 3000);
 
 setInterval(() => {
-    asteroidi[0].remove()
-}, 5000);
+    asteroidi.forEach((e)=>{
+        let ws = e.offsetTop
+        e.style.top = ws+10+"px"
+        if(e.offsetTop > ship.offsetTop - 40) {
+            console.log("aaasssa")
+            if(e.offsetLeft < ship.offsetLeft+40 && e.offsetLeft > ship.offsetLeft-40) {
+                console.log("Aas")
+                game.remove();
+            }
+        }
+        if(ws >1000)
+        {
+            e.remove()
+            console.log("del")
+        }
+    })
+}, 10);
