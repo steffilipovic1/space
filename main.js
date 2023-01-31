@@ -31,12 +31,13 @@ setInterval(() => {
 setInterval(() => {
     asteroidi.forEach((e)=>{
         let ws = e.offsetTop
-        e.style.top = ws+10+"px"
+        e.style.top = ws+5+"px"
         if(e.offsetTop > ship.offsetTop - 40) {
             console.log("aaasssa")
             if(e.offsetLeft < ship.offsetLeft+40 && e.offsetLeft > ship.offsetLeft-40) {
                 console.log("Aas")
                 game.remove();
+                document.body.innerHTML = "you dieded"
             }
         }
         if(ws >1000)
