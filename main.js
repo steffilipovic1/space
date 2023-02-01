@@ -30,7 +30,6 @@ function a() {
     magicanAsteroid.className = 'asteroid';
     game.appendChild(magicanAsteroid);
     asteroidi.push(magicanAsteroid);
-    speed-=10;
     setTimeout(a, speed)
 }
 
@@ -51,7 +50,8 @@ setInterval(() => {
             e.remove()
             console.log("del")
             score++
+            speed-=10;
             scorebox.innerHTML = "score:" + score
         }
     })
-}, 10);
+}, 5);
