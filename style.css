@@ -2,6 +2,14 @@
     background: url("spaa.webp");
     height: 100vh;
     width: 30vw;
+    display: flex;
+}
+#scorebox {
+    height: 2em;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    color: black;
 }
 body {
     overflow: hidden;
