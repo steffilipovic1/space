@@ -4,6 +4,7 @@ let scorebox = document.querySelector("#scorebox")
 let asteroidi = []
 let score = 0
 let speed = 1000   
+let i = 0
 
 ship.style.left = '50vw';
 ship.style.top = '90vh';
@@ -11,11 +12,26 @@ let pos = ship.offsetLeft;
 
 window.addEventListener("keydown", (e)=>{
     if(e.key == "ArrowLeft" && pos > 680) {
-        ship.style.left = (pos-40)+"px";
-        pos = ship.offsetLeft;
+
+        let c = setInterval(() => {
+            ship.style.left = pos-3+"px";
+            pos = ship.offsetLeft;
+            i++
+            if(i>10) {
+            i=0
+            clearInterval(c)
+            }
+        }, 3);
     }else if (e.key == "ArrowRight" && pos < 1163) {
-        ship.style.left = pos+40+"px";
-        pos = ship.offsetLeft;
+        let c = setInterval(() => {
+            ship.style.left = pos+3+"px";
+            pos = ship.offsetLeft;
+            i++
+            if(i>10) {
+            i=0
+            clearInterval(c)
+            }
+        }, 3);
     }
 })
 
@@ -54,4 +70,4 @@ setInterval(() => {
             scorebox.innerHTML = "score:" + score
         }
     })
-}, 5);
+}, 10);
