@@ -6,8 +6,6 @@ let score = 0
 let speed = 1000   
 let i = 0
 
-ship.style.left = '50vw';
-ship.style.top = '90vh';
 let pos = ship.offsetLeft;
 
 window.addEventListener("keydown", (e)=>{
@@ -38,14 +36,14 @@ window.addEventListener("keydown", (e)=>{
 setTimeout(a(), speed)
 
 function a() {
-    let magicanAsteroid = document.createElement("img")
-    magicanAsteroid.src = 'asteroid.png';
-    magicanAsteroid.style.top = '10vh';
-    magicanAsteroid.style.position = 'absolute'
-    magicanAsteroid.style.left = 680+(Math.random()*420)+'px';
-    magicanAsteroid.className = 'asteroid';
-    game.appendChild(magicanAsteroid);
-    asteroidi.push(magicanAsteroid);
+    let ast = document.createElement("img")
+    ast.src = 'asteroid.png';
+    ast.style.top = '10vh';
+    ast.style.position = 'absolute'
+    ast.style.left = 680+(Math.random()*420)+'px';
+    ast.className = 'asteroid';
+    game.appendChild(ast);
+    asteroidi.push(ast);
     setTimeout(a, speed)
 }
 
@@ -54,9 +52,7 @@ setInterval(() => {
         let ws = e.offsetTop
         e.style.top = ws+5+"px"
         if(e.offsetTop > ship.offsetTop - 40 && e.offsetTop < ship.offsetTop+50) {
-            console.log("aaasssa")
             if(e.offsetLeft < ship.offsetLeft+40 && e.offsetLeft > ship.offsetLeft-100) {
-                console.log("Aas")
                 game.remove();
                 document.body.innerHTML = "you dieded, final score: " + score
             }
@@ -64,7 +60,6 @@ setInterval(() => {
         if(ws >1000)
         {
             e.remove()
-            console.log("del")
             score++
             speed-=10;
             scorebox.innerHTML = "score:" + score

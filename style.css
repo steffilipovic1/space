@@ -26,6 +26,8 @@ body {
 #ship {
     height: 4rem;
     position: absolute;
+    left: 50vw;
+    top: 90vh;
 }
 .asteroid {
     width: 7rem;
